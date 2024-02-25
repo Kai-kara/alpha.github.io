@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kara Shivo</title>
+    <link rel="shortcut icon" href="Shivo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>Kara Shivo</h1>
+
+        <img id="imgPreview" style="width: 200px;" src="" alt="Preview">
+
+        <form class="input_form">
+            <p>Submit your information</p>
+            <input type="text" id="name" placeholder="Full Names" required>
+            <input type="email" id="email" placeholder="Email ID" required>
+            <label for="snap">Add photo</label>
+            <input class="snap" type="file" id="snap" accept="image/jpg, image/png, image/jpeg, image/JPEG, image/JPG, image/PNG">
+        </form>
+        
+        <button onclick="openPopUp()" class="btn" type="submit">Submit</button>
+
+        <div id="popup" class="PopUp">
+            <img src="kara.jpg">
+            <h2>Welcome</h2>
+            <p>We have successfully received your presence. Thanks</p>
+            <button class="button" onclick="closePopUp()" type="submit">Ok</button>
+        </div>
+
+
+    </div>
+
+    <script>
+        let popup = document.getElementById("popup")
+        const fileE1 = document.getElementById("snap");
+
+        fileE1.addEventListener('change', () => {
+
+            const fr = new FileReader();
+
+            fr.readAsDataURL(fileE1.files[0]);
+
+            fr.addEventListener('load', () => {
+
+                const url = fr.result;
+                
+                localStorage.setItem('my-image', url)
+                
+            })
+
+        })
+
+
+        function show(){
+            const recentImage = localStorage.getItem('my-image');
+
+            if (recentImage) {
+                document.querySelector("#imgPreview").setAttribute("src", recentImage)
+            } 
+        }           
+
+        setInterval(show, 0.01000)
+
+        function openPopUp(){
+            popup.classList.add("openpopup")
+
+            const name = document.getElementById("name").value;
+            
+
+            localStorage.setItem("Name", name);
+            localStorage.setItem("Email", email);
+      
+
+            return;
+        }
+
+        function closePopUp(){
+            //popup.classList.remove("openpopup")
+            window.location = "home.html"
+        }
+
+    </script>
+
+
+
+</body>
+</html>

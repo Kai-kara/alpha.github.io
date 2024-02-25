@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kara Shivo</title>
+    <link rel="shortcut icon" href="Shivo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+
+        <div class="resend">
+            <h1>My to do List</h1>
+            <input type="text" placeholder="Enter name">
+
+        <button>Submit</button>
+
+        <ul></ul>
+        </div>
+
+        <script>
+            const btnEl = document.querySelector('button');
+            const inputEl = document.querySelector('input');
+            const listEl = document.querySelector('ul');
+
+            btnEl.addEventListener('click', () => {
+
+                const inputValue = inputEl.value;
+                listEl.insertAdjacentHTML('beforeend', `<li>${inputValue}</li>`);
+            })
+
+            function displayDate(){
+                const date = new Date()
+                console.log(date)
+            }
+
+            window.onload = function(){
+                displayDate()
+            }
+
+        </script>
+
+    </div>
+
+
+</body>
+</html>
